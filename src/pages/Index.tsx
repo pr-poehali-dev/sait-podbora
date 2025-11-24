@@ -3,10 +3,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('main');
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
 
   const newsItems = [
     {
@@ -541,55 +547,132 @@ const Index = () => {
         )}
 
         {activeSection === 'contacts' && (
-          <div className="animate-fade-in max-w-2xl">
+          <div className="animate-fade-in">
             <h2 className="text-3xl font-bold mb-6">Контакты</h2>
 
-            <Card>
-              <CardContent className="p-6 space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Icon name="MapPin" className="text-primary" />
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Контактная информация</CardTitle>
+                  <CardDescription>Свяжитесь с нами любым удобным способом</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Icon name="MapPin" className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Адрес</h3>
+                      <p className="text-muted-foreground">
+                        г. Оренбург, ул. Краснознаменная, д. 56
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Адрес</h3>
-                    <p className="text-muted-foreground">
-                      г. Оренбург, ул. Краснознаменная, д. 56
-                    </p>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Icon name="Phone" className="text-primary" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Icon name="Phone" className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Телефон</h3>
+                      <p className="text-muted-foreground">+7 (3532) 77-00-00</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Телефон</h3>
-                    <p className="text-muted-foreground">+7 (3532) 77-00-00</p>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Icon name="Mail" className="text-primary" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Icon name="Mail" className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Email</h3>
+                      <p className="text-muted-foreground">info@voi-orenburg.ru</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-muted-foreground">info@voi-orenburg.ru</p>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Icon name="Clock" className="text-primary" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Icon name="Clock" className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Режим работы</h3>
+                      <p className="text-muted-foreground">Пн-Пт: 9:00 - 18:00</p>
+                      <p className="text-muted-foreground">Сб-Вс: Выходной</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Режим работы</h3>
-                    <p className="text-muted-foreground">Пн-Пт: 9:00 - 18:00</p>
-                    <p className="text-muted-foreground">Сб-Вс: Выходной</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Обратная связь</CardTitle>
+                  <CardDescription>Напишите нам, и мы обязательно ответим</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      toast({
+                        title: 'Сообщение отправлено!',
+                        description: 'Мы свяжемся с вами в ближайшее время.',
+                      });
+                      setFormData({ name: '', email: '', phone: '', message: '' });
+                    }}
+                    className="space-y-4"
+                  >
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Ваше имя</Label>
+                      <Input
+                        id="name"
+                        placeholder="Иван Иванов"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        required
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="ivan@example.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        required
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Телефон</Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        placeholder="+7 (999) 123-45-67"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Сообщение</Label>
+                      <Textarea
+                        id="message"
+                        placeholder="Расскажите, чем мы можем вам помочь..."
+                        rows={5}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        required
+                      />
+                    </div>
+
+                    <Button type="submit" className="w-full">
+                      <Icon name="Send" size={16} className="mr-2" />
+                      Отправить сообщение
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         )}
 
