@@ -14,28 +14,28 @@ const Index = () => {
       title: 'IV фестиваль "Стихия Пегаса"',
       date: '19 апреля 2025',
       category: 'Мероприятия',
-      image: 'https://cdn.poehali.dev/files/f4a849d3-cb6c-488f-81fd-3e4c538de1d2.png',
+      image: 'https://cdn.poehali.dev/projects/a59ff126-bb42-41fe-b66e-2204e8ebec5f/files/ee90edee-21c5-4ec9-94c1-70ea65a888a0.jpg',
     },
     {
       id: 2,
       title: 'КВН на сцене',
       date: '15 апреля 2025',
       category: 'Культура',
-      image: 'https://cdn.poehali.dev/files/f4a849d3-cb6c-488f-81fd-3e4c538de1d2.png',
+      image: 'https://cdn.poehali.dev/projects/a59ff126-bb42-41fe-b66e-2204e8ebec5f/files/e19a1c26-647c-40b4-9585-fba8892d6701.jpg',
     },
     {
       id: 3,
       title: 'Киношкола для участников',
       date: '10 апреля 2025',
       category: 'Образование',
-      image: 'https://cdn.poehali.dev/files/f4a849d3-cb6c-488f-81fd-3e4c538de1d2.png',
+      image: 'https://cdn.poehali.dev/projects/a59ff126-bb42-41fe-b66e-2204e8ebec5f/files/ffc69cf0-22c8-4d78-b32e-8ae44badc0de.jpg',
     },
     {
       id: 4,
       title: 'Награждение волонтёров',
       date: '5 апреля 2025',
       category: 'Новости',
-      image: 'https://cdn.poehali.dev/files/f4a849d3-cb6c-488f-81fd-3e4c538de1d2.png',
+      image: 'https://cdn.poehali.dev/projects/a59ff126-bb42-41fe-b66e-2204e8ebec5f/files/2796fde8-a374-40ce-b217-1a66439859e7.jpg',
     },
   ];
 
