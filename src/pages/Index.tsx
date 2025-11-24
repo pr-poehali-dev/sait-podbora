@@ -66,23 +66,21 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary/20">
       <header className="bg-gradient-to-r from-primary via-primary/90 to-primary/80 text-white shadow-lg">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
-                <Icon name="Users" size={32} className="text-white" />
-              </div>
-              <div>
-                <h1 className="text-2xl md:text-3xl font-bold">
-                  Всероссийское общество инвалидов
-                </h1>
-                <p className="text-primary-foreground/80 text-sm md:text-base italic">
-                  Вместе мы сможем больше!
-                </p>
-              </div>
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center flex-shrink-0">
+              <Icon name="Users" size={32} className="text-white" />
+            </div>
+            <div>
+              <h1 className="text-2xl md:text-3xl font-bold">
+                Всероссийское общество инвалидов
+              </h1>
+              <p className="text-primary-foreground/80 text-sm md:text-base italic">
+                Вместе мы сможем больше!
+              </p>
             </div>
           </div>
 
-          <nav className="flex flex-wrap gap-2">
+          <nav className="hidden md:flex flex-wrap gap-2 mt-4">
             {navItems.map((item) => (
               <Button
                 key={item.id}
@@ -102,7 +100,143 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 flex gap-6">
+        <aside className="w-64 flex-shrink-0 space-y-2">
+          <div className="bg-primary/10 rounded-lg p-3 mb-4">
+            <h2 className="font-semibold text-sm text-primary uppercase tracking-wide">Подписка онлайн</h2>
+            <p className="text-xs text-muted-foreground mt-1">Оформи подписку на газету Равенство</p>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm border">
+            <div className="bg-primary text-white p-3 rounded-t-lg">
+              <h3 className="font-semibold">Об организации</h3>
+            </div>
+            <nav className="py-2">
+              <button
+                onClick={() => setActiveSection('main')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors border-b"
+              >
+                Главная страница
+              </button>
+              <button
+                onClick={() => setActiveSection('about')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors border-b"
+              >
+                О нас
+              </button>
+              <button
+                onClick={() => setActiveSection('docs')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors border-b"
+              >
+                Устав, документы
+              </button>
+              <button
+                onClick={() => setActiveSection('main')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors border-b"
+              >
+                Руководящие органы
+              </button>
+              <button
+                onClick={() => setActiveSection('main')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors border-b"
+              >
+                Местные организации
+              </button>
+              <button
+                onClick={() => setActiveSection('main')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors border-b"
+              >
+                35 лет ОООИ ВОИ
+              </button>
+              <button
+                onClick={() => setActiveSection('main')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors"
+              >
+                Отчет о деятельности
+              </button>
+            </nav>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm border">
+            <div className="bg-primary text-white p-3 rounded-t-lg">
+              <h3 className="font-semibold">Реабилитация</h3>
+            </div>
+            <nav className="py-2">
+              <button
+                onClick={() => setActiveSection('info')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors border-b"
+              >
+                Социальная
+              </button>
+              <button
+                onClick={() => setActiveSection('info')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors border-b"
+              >
+                Трудовая
+              </button>
+              <button
+                onClick={() => setActiveSection('info')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors border-b"
+              >
+                Образование
+              </button>
+              <button
+                onClick={() => setActiveSection('info')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors border-b"
+              >
+                Творческая
+              </button>
+              <button
+                onClick={() => setActiveSection('info')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors"
+              >
+                Спортивная
+              </button>
+            </nav>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm border">
+            <div className="bg-primary text-white p-3 rounded-t-lg">
+              <h3 className="font-semibold">Кружки</h3>
+            </div>
+            <nav className="py-2">
+              <button
+                onClick={() => setActiveSection('info')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors border-b"
+              >
+                Помощь инвалидам
+              </button>
+              <button
+                onClick={() => setActiveSection('info')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors"
+              >
+                Поиск работы
+              </button>
+            </nav>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm border">
+            <div className="bg-primary text-white p-3 rounded-t-lg">
+              <h3 className="font-semibold">Мероприятия</h3>
+            </div>
+            <nav className="py-2">
+              <button
+                onClick={() => setActiveSection('events')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors border-b"
+              >
+                Планы работы
+              </button>
+              <button
+                onClick={() => setActiveSection('events')}
+                className="w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors"
+              >
+                Орг. мероприятия
+              </button>
+            </nav>
+          </div>
+        </aside>
+
+        <main className="flex-1 min-w-0">
         {activeSection === 'main' && (
           <div className="space-y-8 animate-fade-in">
             <section className="relative overflow-hidden rounded-xl bg-gradient-to-r from-primary/10 to-primary/5 p-8 md:p-12">
@@ -526,7 +660,8 @@ const Index = () => {
             </div>
           </div>
         )}
-      </main>
+        </main>
+      </div>
 
       <footer className="bg-foreground/5 mt-16 py-8">
         <div className="container mx-auto px-4">
